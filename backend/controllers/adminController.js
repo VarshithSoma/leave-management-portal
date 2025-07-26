@@ -14,9 +14,21 @@ const getAllUsers = async (req, res, next) => {
   }
 };
 
+// controllers/adminController.js
+
 const createUser = async (req, res, next) => {
   try {
-    const { firstName, lastName, email, password, role, managerId } = req.body;
+    // Set a default value of null for managerId if it's not in the request body
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      role,
+      managerId = null,
+    } = req.body;
+
+    // The rest of the function remains the same...
     const salt = await bcrypt.genSalt(10);
     const passwordHash = await bcrypt.hash(password, salt);
     const newUser = await User.create({
@@ -27,6 +39,7 @@ const createUser = async (req, res, next) => {
       role,
       managerId,
     });
+
     res.status(201).json(newUser);
   } catch (error) {
     next(error);

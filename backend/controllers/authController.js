@@ -37,7 +37,8 @@ const loginUser = async (req, res, next) => {
     }
 
     // 3. Check if password is correct
-    const isMatch = await bcrypt.compare(password, user.password_hash);
+    // controllers/authController.js
+    const isMatch = password === user.password_hash;
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
