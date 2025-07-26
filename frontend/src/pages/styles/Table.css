@@ -1,0 +1,51 @@
+/* src/pages/styles/Table.css */
+.table-container {
+  overflow-x: auto;
+  background-color: var(--bg-surface);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+th {
+  background-color: var(--bg-main);
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+tbody tr {
+  transition: background-color var(--transition-speed) ease;
+}
+
+tbody tr:hover {
+  background-color: var(--bg-main);
+}
+
+/* Status colors using variables */
+.status-approved {
+  color: var(--success-color);
+  font-weight: bold;
+}
+.status-pending {
+  color: var(--warning-color);
+  font-weight: bold;
+}
+.status-rejected {
+  color: var(--error-color);
+  font-weight: bold;
+}
